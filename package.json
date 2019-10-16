@@ -1,0 +1,19 @@
+{
+    "name": "backendserver-web",
+    "version": "1.0.0",
+    "description": "catalogo web par la pagina dle chino",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "juan manuel herrera",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongoose": "^5.7.5"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.4"
+    }
+}
