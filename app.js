@@ -1,10 +1,23 @@
 //require
 var express = require("express");
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 
 //inicializar variables
 var app = express();
+
+//body parse
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+//importar rutas
+var usuarioRoutes = require('./routes/usuario');
+var appRoutes = require('./routes/app');
+
+
 
 
 //conexion a base de datos
@@ -19,12 +32,13 @@ mongoose.connection.openUri('mongodb://localhost:27017/catalogoweb', (err, res) 
 });
 
 
-app.get('/', (req, res, next) => {
-    res.status(200).json({
-        ok: true,
-        mensaje: 'peticion realizada corrrectamente'
-    })
-});
+
+//rutas
+
+app.use('/usuario', usuarioRoutes);
+app.use('/', appRoutes);
+
+
 
 //escuchar peticiones
 app.listen(3000, () => {
